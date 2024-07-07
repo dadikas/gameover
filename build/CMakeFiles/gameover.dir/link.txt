@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/gameover.dir/src/main.cpp.o -o gameover  vendors/imgui_opengl/libimgui_opengl.a -lglfw -lGL vendors/glad/libglad.a -lpthread -ldl -lX11 
