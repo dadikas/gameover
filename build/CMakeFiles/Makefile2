@@ -64,19 +64,22 @@ CMAKE_BINARY_DIR = /home/vannghi/Project/gameover/build
 
 # The main recursive "all" target.
 all: CMakeFiles/gameover.dir/all
-all: vendors/imgui_opengl/all
+all: vendors/glfw-3.4/all
 all: vendors/glad/all
+all: vendors/imgui_opengl/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall: vendors/imgui_opengl/preinstall
+preinstall: vendors/glfw-3.4/preinstall
 preinstall: vendors/glad/preinstall
+preinstall: vendors/imgui_opengl/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
 clean: CMakeFiles/gameover.dir/clean
-clean: vendors/imgui_opengl/clean
+clean: vendors/glfw-3.4/clean
 clean: vendors/glad/clean
+clean: vendors/imgui_opengl/clean
 .PHONY : clean
 
 #=============================================================================
@@ -93,6 +96,37 @@ vendors/glad/preinstall:
 # Recursive "clean" directory target.
 vendors/glad/clean: vendors/glad/CMakeFiles/glad.dir/clean
 .PHONY : vendors/glad/clean
+
+#=============================================================================
+# Directory level rules for directory vendors/glfw-3.4
+
+# Recursive "all" directory target.
+vendors/glfw-3.4/all: vendors/glfw-3.4/src/all
+.PHONY : vendors/glfw-3.4/all
+
+# Recursive "preinstall" directory target.
+vendors/glfw-3.4/preinstall: vendors/glfw-3.4/src/preinstall
+.PHONY : vendors/glfw-3.4/preinstall
+
+# Recursive "clean" directory target.
+vendors/glfw-3.4/clean: vendors/glfw-3.4/src/clean
+.PHONY : vendors/glfw-3.4/clean
+
+#=============================================================================
+# Directory level rules for directory vendors/glfw-3.4/src
+
+# Recursive "all" directory target.
+vendors/glfw-3.4/src/all: vendors/glfw-3.4/src/CMakeFiles/glfw.dir/all
+.PHONY : vendors/glfw-3.4/src/all
+
+# Recursive "preinstall" directory target.
+vendors/glfw-3.4/src/preinstall:
+.PHONY : vendors/glfw-3.4/src/preinstall
+
+# Recursive "clean" directory target.
+vendors/glfw-3.4/src/clean: vendors/glfw-3.4/src/CMakeFiles/glfw.dir/clean
+vendors/glfw-3.4/src/clean: vendors/glfw-3.4/src/CMakeFiles/update_mappings.dir/clean
+.PHONY : vendors/glfw-3.4/src/clean
 
 #=============================================================================
 # Directory level rules for directory vendors/imgui_opengl
@@ -113,16 +147,17 @@ vendors/imgui_opengl/clean: vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/cle
 # Target rules for target CMakeFiles/gameover.dir
 
 # All Build rule for target.
-CMakeFiles/gameover.dir/all: vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/all
+CMakeFiles/gameover.dir/all: vendors/glfw-3.4/src/CMakeFiles/glfw.dir/all
 CMakeFiles/gameover.dir/all: vendors/glad/CMakeFiles/glad.dir/all
+CMakeFiles/gameover.dir/all: vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gameover.dir/build.make CMakeFiles/gameover.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gameover.dir/build.make CMakeFiles/gameover.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/vannghi/Project/gameover/build/CMakeFiles --progress-num=1,2 "Built target gameover"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/vannghi/Project/gameover/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target gameover"
 .PHONY : CMakeFiles/gameover.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/gameover.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/vannghi/Project/gameover/build/CMakeFiles 12
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vannghi/Project/gameover/build/CMakeFiles 60
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/gameover.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/vannghi/Project/gameover/build/CMakeFiles 0
 .PHONY : CMakeFiles/gameover.dir/rule
@@ -137,30 +172,56 @@ CMakeFiles/gameover.dir/clean:
 .PHONY : CMakeFiles/gameover.dir/clean
 
 #=============================================================================
-# Target rules for target vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir
+# Target rules for target vendors/glfw-3.4/src/CMakeFiles/glfw.dir
 
 # All Build rule for target.
-vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/all:
-	$(MAKE) $(MAKESILENT) -f vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/build.make vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/depend
-	$(MAKE) $(MAKESILENT) -f vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/build.make vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/vannghi/Project/gameover/build/CMakeFiles --progress-num=5,6,7,8,9,10,11,12 "Built target imgui_opengl"
-.PHONY : vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/all
+vendors/glfw-3.4/src/CMakeFiles/glfw.dir/all:
+	$(MAKE) $(MAKESILENT) -f vendors/glfw-3.4/src/CMakeFiles/glfw.dir/build.make vendors/glfw-3.4/src/CMakeFiles/glfw.dir/depend
+	$(MAKE) $(MAKESILENT) -f vendors/glfw-3.4/src/CMakeFiles/glfw.dir/build.make vendors/glfw-3.4/src/CMakeFiles/glfw.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/vannghi/Project/gameover/build/CMakeFiles --progress-num=8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52 "Built target glfw"
+.PHONY : vendors/glfw-3.4/src/CMakeFiles/glfw.dir/all
 
 # Build rule for subdir invocation for target.
-vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/vannghi/Project/gameover/build/CMakeFiles 8
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/all
+vendors/glfw-3.4/src/CMakeFiles/glfw.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vannghi/Project/gameover/build/CMakeFiles 45
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 vendors/glfw-3.4/src/CMakeFiles/glfw.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/vannghi/Project/gameover/build/CMakeFiles 0
-.PHONY : vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/rule
+.PHONY : vendors/glfw-3.4/src/CMakeFiles/glfw.dir/rule
 
 # Convenience name for target.
-imgui_opengl: vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/rule
-.PHONY : imgui_opengl
+glfw: vendors/glfw-3.4/src/CMakeFiles/glfw.dir/rule
+.PHONY : glfw
 
 # clean rule for target.
-vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/clean:
-	$(MAKE) $(MAKESILENT) -f vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/build.make vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/clean
-.PHONY : vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/clean
+vendors/glfw-3.4/src/CMakeFiles/glfw.dir/clean:
+	$(MAKE) $(MAKESILENT) -f vendors/glfw-3.4/src/CMakeFiles/glfw.dir/build.make vendors/glfw-3.4/src/CMakeFiles/glfw.dir/clean
+.PHONY : vendors/glfw-3.4/src/CMakeFiles/glfw.dir/clean
+
+#=============================================================================
+# Target rules for target vendors/glfw-3.4/src/CMakeFiles/update_mappings.dir
+
+# All Build rule for target.
+vendors/glfw-3.4/src/CMakeFiles/update_mappings.dir/all:
+	$(MAKE) $(MAKESILENT) -f vendors/glfw-3.4/src/CMakeFiles/update_mappings.dir/build.make vendors/glfw-3.4/src/CMakeFiles/update_mappings.dir/depend
+	$(MAKE) $(MAKESILENT) -f vendors/glfw-3.4/src/CMakeFiles/update_mappings.dir/build.make vendors/glfw-3.4/src/CMakeFiles/update_mappings.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/vannghi/Project/gameover/build/CMakeFiles --progress-num=61 "Built target update_mappings"
+.PHONY : vendors/glfw-3.4/src/CMakeFiles/update_mappings.dir/all
+
+# Build rule for subdir invocation for target.
+vendors/glfw-3.4/src/CMakeFiles/update_mappings.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vannghi/Project/gameover/build/CMakeFiles 1
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 vendors/glfw-3.4/src/CMakeFiles/update_mappings.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vannghi/Project/gameover/build/CMakeFiles 0
+.PHONY : vendors/glfw-3.4/src/CMakeFiles/update_mappings.dir/rule
+
+# Convenience name for target.
+update_mappings: vendors/glfw-3.4/src/CMakeFiles/update_mappings.dir/rule
+.PHONY : update_mappings
+
+# clean rule for target.
+vendors/glfw-3.4/src/CMakeFiles/update_mappings.dir/clean:
+	$(MAKE) $(MAKESILENT) -f vendors/glfw-3.4/src/CMakeFiles/update_mappings.dir/build.make vendors/glfw-3.4/src/CMakeFiles/update_mappings.dir/clean
+.PHONY : vendors/glfw-3.4/src/CMakeFiles/update_mappings.dir/clean
 
 #=============================================================================
 # Target rules for target vendors/glad/CMakeFiles/glad.dir
@@ -169,7 +230,7 @@ vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/clean:
 vendors/glad/CMakeFiles/glad.dir/all:
 	$(MAKE) $(MAKESILENT) -f vendors/glad/CMakeFiles/glad.dir/build.make vendors/glad/CMakeFiles/glad.dir/depend
 	$(MAKE) $(MAKESILENT) -f vendors/glad/CMakeFiles/glad.dir/build.make vendors/glad/CMakeFiles/glad.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/vannghi/Project/gameover/build/CMakeFiles --progress-num=3,4 "Built target glad"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/vannghi/Project/gameover/build/CMakeFiles --progress-num=6,7 "Built target glad"
 .PHONY : vendors/glad/CMakeFiles/glad.dir/all
 
 # Build rule for subdir invocation for target.
@@ -189,12 +250,40 @@ vendors/glad/CMakeFiles/glad.dir/clean:
 .PHONY : vendors/glad/CMakeFiles/glad.dir/clean
 
 #=============================================================================
+# Target rules for target vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir
+
+# All Build rule for target.
+vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/all: vendors/glfw-3.4/src/CMakeFiles/glfw.dir/all
+vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/all: vendors/glad/CMakeFiles/glad.dir/all
+	$(MAKE) $(MAKESILENT) -f vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/build.make vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/depend
+	$(MAKE) $(MAKESILENT) -f vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/build.make vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/vannghi/Project/gameover/build/CMakeFiles --progress-num=53,54,55,56,57,58,59,60 "Built target imgui_opengl"
+.PHONY : vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/all
+
+# Build rule for subdir invocation for target.
+vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vannghi/Project/gameover/build/CMakeFiles 55
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vannghi/Project/gameover/build/CMakeFiles 0
+.PHONY : vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/rule
+
+# Convenience name for target.
+imgui_opengl: vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/rule
+.PHONY : imgui_opengl
+
+# clean rule for target.
+vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/clean:
+	$(MAKE) $(MAKESILENT) -f vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/build.make vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/clean
+.PHONY : vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/clean
+
+#=============================================================================
 # Special targets to cleanup operation of make.
 
 # Special rule to run CMake to check the build system integrity.
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
+	$(CMAKE_COMMAND) -P /home/vannghi/Project/gameover/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/vannghi/Project/gameover/vendors/glad/include -I/home/vannghi/Project/gameover/vendors/imgui_opengl -I/home/vannghi/Project/gameover/vendors/imgui_opengl/backends
+CXX_INCLUDES = -I/home/vannghi/Project/gameover/include -I/home/vannghi/Project/gameover/vendors/glad/include -I/home/vannghi/Project/gameover/vendors/glfw-3.4/include -I/home/vannghi/Project/gameover/vendors/imgui_opengl
 
-CXX_FLAGS = -std=gnu++17
+CXX_FLAGS = 
 

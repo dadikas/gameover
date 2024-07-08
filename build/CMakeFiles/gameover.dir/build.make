@@ -69,10 +69,38 @@ include CMakeFiles/gameover.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/gameover.dir/flags.make
 
+CMakeFiles/gameover.dir/src/application.cpp.o: CMakeFiles/gameover.dir/flags.make
+CMakeFiles/gameover.dir/src/application.cpp.o: ../src/application.cpp
+CMakeFiles/gameover.dir/src/application.cpp.o: CMakeFiles/gameover.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vannghi/Project/gameover/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/gameover.dir/src/application.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gameover.dir/src/application.cpp.o -MF CMakeFiles/gameover.dir/src/application.cpp.o.d -o CMakeFiles/gameover.dir/src/application.cpp.o -c /home/vannghi/Project/gameover/src/application.cpp
+
+CMakeFiles/gameover.dir/src/application.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gameover.dir/src/application.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vannghi/Project/gameover/src/application.cpp > CMakeFiles/gameover.dir/src/application.cpp.i
+
+CMakeFiles/gameover.dir/src/application.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gameover.dir/src/application.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vannghi/Project/gameover/src/application.cpp -o CMakeFiles/gameover.dir/src/application.cpp.s
+
+CMakeFiles/gameover.dir/src/core/core.cpp.o: CMakeFiles/gameover.dir/flags.make
+CMakeFiles/gameover.dir/src/core/core.cpp.o: ../src/core/core.cpp
+CMakeFiles/gameover.dir/src/core/core.cpp.o: CMakeFiles/gameover.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vannghi/Project/gameover/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/gameover.dir/src/core/core.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gameover.dir/src/core/core.cpp.o -MF CMakeFiles/gameover.dir/src/core/core.cpp.o.d -o CMakeFiles/gameover.dir/src/core/core.cpp.o -c /home/vannghi/Project/gameover/src/core/core.cpp
+
+CMakeFiles/gameover.dir/src/core/core.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gameover.dir/src/core/core.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vannghi/Project/gameover/src/core/core.cpp > CMakeFiles/gameover.dir/src/core/core.cpp.i
+
+CMakeFiles/gameover.dir/src/core/core.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gameover.dir/src/core/core.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vannghi/Project/gameover/src/core/core.cpp -o CMakeFiles/gameover.dir/src/core/core.cpp.s
+
 CMakeFiles/gameover.dir/src/main.cpp.o: CMakeFiles/gameover.dir/flags.make
 CMakeFiles/gameover.dir/src/main.cpp.o: ../src/main.cpp
 CMakeFiles/gameover.dir/src/main.cpp.o: CMakeFiles/gameover.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vannghi/Project/gameover/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/gameover.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vannghi/Project/gameover/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/gameover.dir/src/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gameover.dir/src/main.cpp.o -MF CMakeFiles/gameover.dir/src/main.cpp.o.d -o CMakeFiles/gameover.dir/src/main.cpp.o -c /home/vannghi/Project/gameover/src/main.cpp
 
 CMakeFiles/gameover.dir/src/main.cpp.i: cmake_force
@@ -83,19 +111,44 @@ CMakeFiles/gameover.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gameover.dir/src/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vannghi/Project/gameover/src/main.cpp -o CMakeFiles/gameover.dir/src/main.cpp.s
 
+CMakeFiles/gameover.dir/src/ui/button.cpp.o: CMakeFiles/gameover.dir/flags.make
+CMakeFiles/gameover.dir/src/ui/button.cpp.o: ../src/ui/button.cpp
+CMakeFiles/gameover.dir/src/ui/button.cpp.o: CMakeFiles/gameover.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vannghi/Project/gameover/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/gameover.dir/src/ui/button.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gameover.dir/src/ui/button.cpp.o -MF CMakeFiles/gameover.dir/src/ui/button.cpp.o.d -o CMakeFiles/gameover.dir/src/ui/button.cpp.o -c /home/vannghi/Project/gameover/src/ui/button.cpp
+
+CMakeFiles/gameover.dir/src/ui/button.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gameover.dir/src/ui/button.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vannghi/Project/gameover/src/ui/button.cpp > CMakeFiles/gameover.dir/src/ui/button.cpp.i
+
+CMakeFiles/gameover.dir/src/ui/button.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gameover.dir/src/ui/button.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vannghi/Project/gameover/src/ui/button.cpp -o CMakeFiles/gameover.dir/src/ui/button.cpp.s
+
 # Object files for target gameover
 gameover_OBJECTS = \
-"CMakeFiles/gameover.dir/src/main.cpp.o"
+"CMakeFiles/gameover.dir/src/application.cpp.o" \
+"CMakeFiles/gameover.dir/src/core/core.cpp.o" \
+"CMakeFiles/gameover.dir/src/main.cpp.o" \
+"CMakeFiles/gameover.dir/src/ui/button.cpp.o"
 
 # External object files for target gameover
 gameover_EXTERNAL_OBJECTS =
 
+gameover: CMakeFiles/gameover.dir/src/application.cpp.o
+gameover: CMakeFiles/gameover.dir/src/core/core.cpp.o
 gameover: CMakeFiles/gameover.dir/src/main.cpp.o
+gameover: CMakeFiles/gameover.dir/src/ui/button.cpp.o
 gameover: CMakeFiles/gameover.dir/build.make
+gameover: vendors/glad/libglad.a
+gameover: vendors/glfw-3.4/src/libglfw3.a
 gameover: vendors/imgui_opengl/libimgui_opengl.a
 gameover: vendors/glad/libglad.a
+gameover: vendors/glfw-3.4/src/libglfw3.a
+gameover: /usr/lib/x86_64-linux-gnu/librt.a
+gameover: /usr/lib/x86_64-linux-gnu/libm.so
 gameover: CMakeFiles/gameover.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vannghi/Project/gameover/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable gameover"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/vannghi/Project/gameover/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable gameover"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gameover.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

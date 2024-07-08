@@ -18,7 +18,7 @@ vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/backends/imgui_impl_glfw.cpp.o:
  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
  /usr/include/strings.h /usr/include/assert.h \
  /home/vannghi/Project/gameover/vendors/imgui_opengl/backends/imgui_impl_glfw.h \
- /usr/include/GLFW/glfw3.h \
+ /home/vannghi/Project/gameover/vendors/glfw-3.4/include/GLFW/glfw3.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/types.h \
  /usr/include/x86_64-linux-gnu/bits/typesizes.h \
@@ -26,4 +26,5 @@ vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/backends/imgui_impl_glfw.cpp.o:
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h /usr/include/GL/gl.h \
- /usr/include/GL/glext.h /usr/include/KHR/khrplatform.h
+ /usr/include/GL/glext.h \
+ /home/vannghi/Project/gameover/vendors/glad/include/KHR/khrplatform.h

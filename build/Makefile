@@ -113,6 +113,7 @@ preinstall/fast:
 
 # clear depends
 depend:
+	$(CMAKE_COMMAND) -P /home/vannghi/Project/gameover/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
@@ -130,17 +131,30 @@ gameover/fast:
 .PHONY : gameover/fast
 
 #=============================================================================
-# Target rules for targets named imgui_opengl
+# Target rules for targets named glfw
 
 # Build rule for target.
-imgui_opengl: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 imgui_opengl
-.PHONY : imgui_opengl
+glfw: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 glfw
+.PHONY : glfw
 
 # fast build rule for target.
-imgui_opengl/fast:
-	$(MAKE) $(MAKESILENT) -f vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/build.make vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/build
-.PHONY : imgui_opengl/fast
+glfw/fast:
+	$(MAKE) $(MAKESILENT) -f vendors/glfw-3.4/src/CMakeFiles/glfw.dir/build.make vendors/glfw-3.4/src/CMakeFiles/glfw.dir/build
+.PHONY : glfw/fast
+
+#=============================================================================
+# Target rules for targets named update_mappings
+
+# Build rule for target.
+update_mappings: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 update_mappings
+.PHONY : update_mappings
+
+# fast build rule for target.
+update_mappings/fast:
+	$(MAKE) $(MAKESILENT) -f vendors/glfw-3.4/src/CMakeFiles/update_mappings.dir/build.make vendors/glfw-3.4/src/CMakeFiles/update_mappings.dir/build
+.PHONY : update_mappings/fast
 
 #=============================================================================
 # Target rules for targets named glad
@@ -154,6 +168,67 @@ glad: cmake_check_build_system
 glad/fast:
 	$(MAKE) $(MAKESILENT) -f vendors/glad/CMakeFiles/glad.dir/build.make vendors/glad/CMakeFiles/glad.dir/build
 .PHONY : glad/fast
+
+#=============================================================================
+# Target rules for targets named imgui_opengl
+
+# Build rule for target.
+imgui_opengl: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 imgui_opengl
+.PHONY : imgui_opengl
+
+# fast build rule for target.
+imgui_opengl/fast:
+	$(MAKE) $(MAKESILENT) -f vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/build.make vendors/imgui_opengl/CMakeFiles/imgui_opengl.dir/build
+.PHONY : imgui_opengl/fast
+
+src/application.o: src/application.cpp.o
+.PHONY : src/application.o
+
+# target to build an object file
+src/application.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gameover.dir/build.make CMakeFiles/gameover.dir/src/application.cpp.o
+.PHONY : src/application.cpp.o
+
+src/application.i: src/application.cpp.i
+.PHONY : src/application.i
+
+# target to preprocess a source file
+src/application.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gameover.dir/build.make CMakeFiles/gameover.dir/src/application.cpp.i
+.PHONY : src/application.cpp.i
+
+src/application.s: src/application.cpp.s
+.PHONY : src/application.s
+
+# target to generate assembly for a file
+src/application.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gameover.dir/build.make CMakeFiles/gameover.dir/src/application.cpp.s
+.PHONY : src/application.cpp.s
+
+src/core/core.o: src/core/core.cpp.o
+.PHONY : src/core/core.o
+
+# target to build an object file
+src/core/core.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gameover.dir/build.make CMakeFiles/gameover.dir/src/core/core.cpp.o
+.PHONY : src/core/core.cpp.o
+
+src/core/core.i: src/core/core.cpp.i
+.PHONY : src/core/core.i
+
+# target to preprocess a source file
+src/core/core.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gameover.dir/build.make CMakeFiles/gameover.dir/src/core/core.cpp.i
+.PHONY : src/core/core.cpp.i
+
+src/core/core.s: src/core/core.cpp.s
+.PHONY : src/core/core.s
+
+# target to generate assembly for a file
+src/core/core.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gameover.dir/build.make CMakeFiles/gameover.dir/src/core/core.cpp.s
+.PHONY : src/core/core.cpp.s
 
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
@@ -179,6 +254,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gameover.dir/build.make CMakeFiles/gameover.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/ui/button.o: src/ui/button.cpp.o
+.PHONY : src/ui/button.o
+
+# target to build an object file
+src/ui/button.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gameover.dir/build.make CMakeFiles/gameover.dir/src/ui/button.cpp.o
+.PHONY : src/ui/button.cpp.o
+
+src/ui/button.i: src/ui/button.cpp.i
+.PHONY : src/ui/button.i
+
+# target to preprocess a source file
+src/ui/button.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gameover.dir/build.make CMakeFiles/gameover.dir/src/ui/button.cpp.i
+.PHONY : src/ui/button.cpp.i
+
+src/ui/button.s: src/ui/button.cpp.s
+.PHONY : src/ui/button.s
+
+# target to generate assembly for a file
+src/ui/button.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gameover.dir/build.make CMakeFiles/gameover.dir/src/ui/button.cpp.s
+.PHONY : src/ui/button.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -187,12 +286,23 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... update_mappings"
 	@echo "... gameover"
 	@echo "... glad"
+	@echo "... glfw"
 	@echo "... imgui_opengl"
+	@echo "... src/application.o"
+	@echo "... src/application.i"
+	@echo "... src/application.s"
+	@echo "... src/core/core.o"
+	@echo "... src/core/core.i"
+	@echo "... src/core/core.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/ui/button.o"
+	@echo "... src/ui/button.i"
+	@echo "... src/ui/button.s"
 .PHONY : help
 
 
@@ -204,6 +314,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
+	$(CMAKE_COMMAND) -P /home/vannghi/Project/gameover/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

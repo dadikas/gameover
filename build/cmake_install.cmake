@@ -44,12 +44,17 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/vannghi/Project/gameover/build/vendors/imgui_opengl/cmake_install.cmake")
+  include("/home/vannghi/Project/gameover/build/vendors/glfw-3.4/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
   include("/home/vannghi/Project/gameover/build/vendors/glad/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/vannghi/Project/gameover/build/vendors/imgui_opengl/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
