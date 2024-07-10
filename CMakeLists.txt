@@ -13,7 +13,7 @@ add_subdirectory(vendors/glad)
 add_subdirectory(vendors/imgui_opengl)
 
 # Define the source files
-file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
+file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/gameover/*.cpp)
 
 # Create the executable
 add_executable(${CMAKE_PROJECT_NAME} ${SOURCES})

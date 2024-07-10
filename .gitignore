@@ -1,2 +1,22 @@
 .git
 build/
+# Directories
+.vs/
+.vscode/
+bin*/
+logs/
+
+# Files
+*.user
+*.DS_STORE
+*.xcworkspace/
+*.xcodeproj/
+*.vcxproj*
+*.sln
+*Makefile
+*.pyc
+
+# Allow list
+!premake5.exe
+!*.dll
+!*.lib
