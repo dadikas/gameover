@@ -1,30 +1,20 @@
-cmake_minimum_required(VERSION 3.14)
-project(gameover)
+cmake_minimum_required(VERSION 3.16)
 
-# Disable GLFW build options we don't need
-set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
-set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
-set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
-set(GLFW_INSTALL OFF CACHE BOOL "" FORCE)
+project(gameover_workspace)
 
-# Add subdirectories for dependencies
-add_subdirectory(vendors/glfw-3.4)
+# Set the C++ standard
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Set the output directories for binaries and object files
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+set(CMAKE_OBJECT_PATH_MAX 250)
+
+# Include the subdirectories
+add_subdirectory(gameover)
+add_subdirectory(gameovereditor)
 add_subdirectory(vendors/glad)
+add_subdirectory(vendors/glfw-3.4)
 add_subdirectory(vendors/imgui_opengl)
-
-# Define the source files
-file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/gameover/*.cpp)
-
-# Create the executable
-add_executable(${CMAKE_PROJECT_NAME} ${SOURCES})
-
-# Set C++ standard
-set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY CXX_STANDARD 17)
-
-# Include directories
-target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/
-)
-
-# Link libraries
-target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE glad glfw imgui_opengl)

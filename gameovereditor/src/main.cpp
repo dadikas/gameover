@@ -1,6 +1,7 @@
 #include <iostream>
+#include "gameover/engine.h"
 
 int main() {
-    std::cout << "Game Over!" << std::endl;
+    gameover::getInfo();
     return 0;
 }
