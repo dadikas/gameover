@@ -2,6 +2,12 @@ cmake_minimum_required(VERSION 3.16)
 
 project(gameover_workspace)
 
+#Disable GLFW build options
+set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+set(GLFW_INSTALL OFF CACHE BOOL "" FORCE)
+
 # Set the C++ standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -18,3 +24,5 @@ add_subdirectory(gameovereditor)
 add_subdirectory(vendors/glad)
 add_subdirectory(vendors/glfw-3.4)
 add_subdirectory(vendors/imgui_opengl)
+
+

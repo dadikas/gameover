@@ -3,5 +3,7 @@
 
 int main() {
     gameover::getInfo();
+    gameover::init();
+    gameover::quit();
     return 0;
 }

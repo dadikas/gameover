@@ -10,6 +10,11 @@ workspace "gameover"
 
 tdir = "bin/%{cfg.buildcfg}/%{prj.name}"
 odir = "bin-obj/%{cfg.buildcfg}/%{prj.name}"
+--vendors dependencies
+vendors = {}
+vendors["GLFW"] = "vendors/glfw-3.4"
+vendors["SDL2"] = "vendors/sdl2"
+
 
 project "gameover"
     location "gameover"
@@ -30,6 +35,7 @@ project "gameover"
     externalincludedirs
     {
         "%{prj.name}/include/gameover",
+        "%{vendors.SDL2}/include"
     }
     
 
@@ -100,10 +106,15 @@ project "gameovereditor"
 
     filter {"system:windows", "configurations:*"}
     systemversion "latest"
-
         defines
         {
             "GAMEOVER_PLATFORM_WINDOWS"
+        }
+        libdirs{
+            "%{vendors.SDL2}/lib"
+        }
+        links{
+            "SDL2",
         }
 
     filter {"system:linux", "configurations:*"}
