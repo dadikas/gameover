@@ -122,13 +122,19 @@ project "gameovereditor"
         {
             "GAMEOVER_PLATFORM_LINUX"
         }
-        filter "configurations:Debug"
+
+        links{
+            "SDL2",
+        }
+
+    filter "configurations:Debug"
         defines
         {
             "GAMEOVER_CONFIG_DEBUG"
         }
         runtime "Debug"
         symbols "on"
+
     
     filter "configurations:Release"
         defines
