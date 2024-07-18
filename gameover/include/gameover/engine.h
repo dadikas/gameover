@@ -1,8 +1,24 @@
 #pragma once
+#include "core/window.h"
 
 namespace gameover
 {
-    void getInfo();
-    bool init();
-    void quit();
+    class Engine
+    {
+    public:
+        static Engine& Instance();
+        ~Engine(){};
+        
+        [[nodiscard]] bool Initialize();
+        void Shutdown();
+
+    private:
+        void GetInfo();
+
+    private:
+        core::Window mWindow;
+        Engine();
+        static Engine* mInstance;
+    };
+    
 }

@@ -14,7 +14,7 @@ odir = "bin-obj/%{cfg.buildcfg}/%{prj.name}"
 vendors = {}
 vendors["GLFW"] = "vendors/glfw-3.4"
 vendors["SDL2"] = "vendors/sdl2"
-
+vendors["SPDLOG"] = "vendors/spdlog"
 
 project "gameover"
     location "gameover"
@@ -35,7 +35,8 @@ project "gameover"
     externalincludedirs
     {
         "%{prj.name}/include/gameover",
-        "%{vendors.SDL2}/include"
+        "%{vendors.SDL2}/include",
+        "%{vendors.SPDLOG}/include",
     }
     
 

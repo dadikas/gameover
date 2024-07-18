@@ -3,8 +3,40 @@
 #include "sdl2/SDL.h"
 
 namespace gameover{
+	Engine& Engine::Instance(){
+		if(!mInstance)
+		{
+			mInstance = new Engine();
+		}
+		return *mInstance;
+	}
 
-    void getInfo(){
+	bool Engine::Initialize(){
+		bool ret = true;
+		if(SDL_Init(SDL_INIT_EVERYTHING) < 0)
+		{
+			std::cout << "Error initializing SDL2 " << SDL_GetError() << std::endl;
+			ret = false;
+		}
+		else
+		{
+			SDL_version version;
+			SDL_VERSION(&version);
+			std::cout << "SDL2 Version: " << (int)version.major << "." << (int)version.minor << "." << (int)version.patch << std::endl;
+			if (!mWindows.Create())
+			{
+				std::cout << "Error creating window" << std::endl;
+				ret = false;
+			}
+			{
+				/* code */
+			}
+			
+		}
+		return ret;
+	}
+
+    void GetInfo(){
 #ifdef GAMEOVER_CONFIG_DEBUG
 		std::cout << "Configuration: DEBUG" << std::endl;
 #endif
@@ -19,20 +51,5 @@ namespace gameover{
 #endif      
     }
 
-	bool init(){
-		bool ret = true;
-		if(SDL_Init(SDL_INIT_EVERYTHING) != 0){
-			std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
-			ret = false;
-		}
-		else{
-			SDL_version version;
-			SDL_VERSION(&version);
-			std::cout << "SDL Version: " << (int)version.major << "." << (int)version.minor << "." << (int)version.patch << std::endl;
-		}
-		return ret;
-	}
-	void quit(){
-		SDL_Quit();
-	}
+	
 }
