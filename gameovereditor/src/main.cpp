@@ -2,8 +2,15 @@
 #include "gameover/engine.h"
 
 int main() {
-    gameover::getInfo();
-    gameover::init();
-    gameover::quit();
+    gameover::Engine& engine = gameover::Engine::Instance();
+    if(engine.Initialize())
+    {
+
+        while(true)
+        {
+            // Game loop
+        }
+    }
+    engine.Shutdown();
     return 0;
 }

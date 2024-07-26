@@ -12,6 +12,6 @@ namespace gameover::core
         bool Create();
         void Shutdown();
     private:
-        SDL_Window* mwindow;
+        SDL_Window* mWindow;
     };
 }

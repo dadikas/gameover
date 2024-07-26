@@ -23,17 +23,19 @@ namespace gameover{
 			SDL_version version;
 			SDL_VERSION(&version);
 			std::cout << "SDL2 Version: " << (int)version.major << "." << (int)version.minor << "." << (int)version.patch << std::endl;
-			if (!mWindows.Create())
+			if (!mWindow.Create())
 			{
 				std::cout << "Error creating window" << std::endl;
 				ret = false;
 			}
-			{
-				/* code */
-			}
+			
 			
 		}
 		return ret;
+	}
+	void Engine::Shutdown(){
+		mWindow.Shutdown();
+		SDL_Quit();
 	}
 
     void GetInfo(){
@@ -51,5 +53,8 @@ namespace gameover{
 #endif      
     }
 
-	
+	Engine* Engine::mInstance = nullptr;
+	Engine::Engine()
+	{
+	}
 }
