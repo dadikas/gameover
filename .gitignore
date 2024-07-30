@@ -16,7 +16,8 @@ ndk/
 *.sln
 *Makefile
 *.pyc
-
+CMakeLists.txt
+*.cmake
 # Allow list
 !premake5.exe
 !*.dll

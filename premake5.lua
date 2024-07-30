@@ -1,3 +1,4 @@
+dofile("premake-cmake/cmake.lua")
 workspace "gameover"
     startproject "gameovereditor"
     architecture "x64"
@@ -145,3 +146,5 @@ project "gameovereditor"
         runtime "Release"
         symbols "off"
         optimize "on"
+
+-- require "cmake"
