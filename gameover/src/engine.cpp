@@ -10,9 +10,20 @@ namespace gameover{
 		}
 		return *mInstance;
 	}
-
+	
+	void Engine::Run(){
+		if(Initialize())
+		{
+			while(mIsRunning){
+				mWindow.PumpEvents();
+			}
+			Shutdown();
+		}
+	}
+	
+	//private
 	bool Engine::Initialize(){
-		bool ret = true;
+		bool ret = false;
 		if(SDL_Init(SDL_INIT_EVERYTHING) < 0)
 		{
 			std::cout << "Error initializing SDL2 " << SDL_GetError() << std::endl;
@@ -23,13 +34,15 @@ namespace gameover{
 			SDL_version version;
 			SDL_VERSION(&version);
 			std::cout << "SDL2 Version: " << (int)version.major << "." << (int)version.minor << "." << (int)version.patch << std::endl;
-			if (!mWindow.Create())
+			if (mWindow.Create())
 			{
-				std::cout << "Error creating window" << std::endl;
-				ret = false;
+				ret = true;
+				mIsRunning = true;
 			}
-			
-			
+		}
+		if(!ret){
+			std::cout << "Error initializing engine. Shutting down" << std::endl;
+			Shutdown();
 		}
 		return ret;
 	}
@@ -38,7 +51,7 @@ namespace gameover{
 		SDL_Quit();
 	}
 
-    void GetInfo(){
+    void Engine::GetInfo(){
 #ifdef GAMEOVER_CONFIG_DEBUG
 		std::cout << "Configuration: DEBUG" << std::endl;
 #endif
@@ -55,6 +68,8 @@ namespace gameover{
 
 	Engine* Engine::mInstance = nullptr;
 	Engine::Engine()
+		:mIsRunning(false)
 	{
+		GetInfo();
 	}
 }

@@ -9,13 +9,15 @@ namespace gameover
         static Engine& Instance();
         ~Engine(){};
         
-        [[nodiscard]] bool Initialize();
+        void Run();
+        inline void Quit(){ mIsRunning = false; } 
+    private:
+        void GetInfo();
+         [[nodiscard]] bool Initialize();
         void Shutdown();
 
     private:
-        void GetInfo();
-
-    private:
+        bool mIsRunning;
         core::Window mWindow;
         Engine();
         static Engine* mInstance;

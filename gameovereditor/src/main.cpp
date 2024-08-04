@@ -3,14 +3,6 @@
 
 int main() {
     gameover::Engine& engine = gameover::Engine::Instance();
-    if(engine.Initialize())
-    {
-
-        while(true)
-        {
-            // Game loop
-        }
-    }
-    engine.Shutdown();
+    engine.Run();
     return 0;
 }

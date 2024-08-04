@@ -1,4 +1,5 @@
 #include "core/window.h"
+#include "engine.h"
 #include "sdl2/SDL.h"
 #include <iostream>
 
@@ -27,6 +28,22 @@ namespace gameover::core
         {
             SDL_DestroyWindow(mWindow);
             mWindow = nullptr;
+        }
+    }
+    void Window::PumpEvents()
+    {
+        SDL_Event event;
+        while (SDL_PollEvent(&event))
+        {
+            switch (event.type)
+            {
+            case SDL_QUIT:
+                Engine::Instance().Quit();
+                break;
+
+            default:
+                break;
+            }
         }
     }
 }
