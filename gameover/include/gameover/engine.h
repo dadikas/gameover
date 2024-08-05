@@ -1,6 +1,6 @@
 #pragma once
 #include "core/window.h"
-
+#include "managers/logmanager.h"
 namespace gameover
 {
     class Engine
@@ -18,7 +18,12 @@ namespace gameover
 
     private:
         bool mIsRunning;
+        bool mIsInitialized;
+
         core::Window mWindow;
+        managers::LogManager mLogManager;
+
+
         Engine();
         static Engine* mInstance;
     };

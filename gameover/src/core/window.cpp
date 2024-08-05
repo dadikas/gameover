@@ -1,7 +1,7 @@
 #include "core/window.h"
 #include "engine.h"
 #include "sdl2/SDL.h"
-#include <iostream>
+#include "log.h"
 
 namespace gameover::core
 {
@@ -18,7 +18,7 @@ namespace gameover::core
         mWindow = SDL_CreateWindow("Gameover", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, 0);
         if (!mWindow)
         {
-            std::cout << "Error creating window " << SDL_GetError() << std::endl;
+           GAMEOVER_ERROR("Error creating window: {}", SDL_GetError() );
         }
         return ret;
     }

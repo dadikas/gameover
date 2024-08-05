@@ -1,6 +1,7 @@
 #pragma once
 
-namespace gameover::manager{
+namespace gameover::managers
+{
 
     class LogManager
     {
