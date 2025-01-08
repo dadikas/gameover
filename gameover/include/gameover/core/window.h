@@ -1,6 +1,7 @@
 #pragma once
 
 struct SDL_Window;
+using SDL_GLContext = void*;   
 namespace gameover::core
 {
     class Window
@@ -12,7 +13,11 @@ namespace gameover::core
         bool Create();
         void Shutdown();
         void PumpEvents();
+
+        void BeginRender();
+        void EndRender();
     private:
         SDL_Window* mWindow;
+        SDL_GLContext mContext;
     };
 }

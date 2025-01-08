@@ -16,6 +16,9 @@ vendors = {}
 vendors["GLFW"] = "vendors/glfw-3.4"
 vendors["SDL2"] = "vendors/sdl2"
 vendors["SPDLOG"] = "vendors/spdlog"
+vendors["GLAD"] = "vendors/glad"
+--Process Glad 
+include "vendors/glad"
 
 project "gameover"
     location "gameover"
@@ -38,6 +41,7 @@ project "gameover"
         "%{prj.name}/include/gameover",
         "%{vendors.SDL2}/include",
         "%{vendors.SPDLOG}/include",
+        "%{vendors.GLAD}/include",
     }
     
 
@@ -45,7 +49,12 @@ project "gameover"
     {
         "FatalWarnings"
     }
-    
+
+    defines
+    {
+        "GLFW_INCLUDE_NONE" -- to avoid include glfw3.h
+    }
+
     filter {"system:windows", "configurations:*"}
         systemversion "latest"
 
@@ -117,6 +126,7 @@ project "gameovereditor"
         }
         links{
             "SDL2",
+            "GLAD",
         }
 
     filter {"system:linux", "configurations:*"}
@@ -127,6 +137,7 @@ project "gameovereditor"
 
         links{
             "SDL2",
+            "GLAD",
         }
 
     filter "configurations:Debug"

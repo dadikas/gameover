@@ -11,6 +11,7 @@ namespace gameover
         
         void Run();
         inline void Quit(){ mIsRunning = false; } 
+        
     private:
         void GetInfo();
          [[nodiscard]] bool Initialize();
