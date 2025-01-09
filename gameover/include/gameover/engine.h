@@ -21,7 +21,7 @@ namespace gameover
         bool mIsRunning;
         bool mIsInitialized;
 
-        core::Window mWindow;
+        core::Window* mWindow;
         managers::LogManager mLogManager;
 
 

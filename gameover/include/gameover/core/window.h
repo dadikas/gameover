@@ -1,23 +1,19 @@
 #pragma once
 
-struct SDL_Window;
-using SDL_GLContext = void*;   
 namespace gameover::core
 {
     class Window
     {
     public:
-        Window();
-        ~Window();
+        virtual bool Create();
+        virtual void Shutdown();
+        virtual void PumpEvents();
 
-        bool Create();
-        void Shutdown();
-        void PumpEvents();
+        virtual void BeginRender();
+        virtual void EndRender();
 
-        void BeginRender();
-        void EndRender();
-    private:
-        SDL_Window* mWindow;
-        SDL_GLContext mContext;
+        virtual ~Window() = default;
     };
+
+
 }

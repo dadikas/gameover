@@ -2,6 +2,7 @@
 #include "sdl2/SDL.h"
 #include "log.h"
 #include <SDL2/SDL.h>
+#include "core/opengl_window.h"
 namespace gameover
 {
 	Engine &Engine::Instance()
@@ -19,7 +20,10 @@ namespace gameover
 		{
 			while (mIsRunning)
 			{
-				mWindow.PumpEvents();
+				mWindow->PumpEvents();
+
+				mWindow->BeginRender();
+				mWindow->EndRender();
 			}
 			Shutdown();
 		}
@@ -29,6 +33,7 @@ namespace gameover
 	bool Engine::Initialize()
 	{
 		bool ret = false;
+		mWindow = new core::OpenGlWindow();
 
 		GAMEOVER_ASSERT(!mIsInitialized, "Attempting to call Engine::Initialize() more than once");		
 		if (!mIsInitialized)
@@ -46,7 +51,7 @@ namespace gameover
 				SDL_version version;
 				SDL_VERSION(&version);
 				GAMEOVER_INFO("SDL2 {}.{}.{}", (int)version.major, (int)version.minor, (int)version.patch);
-				if (mWindow.Create())
+				if (mWindow->Create())
 				{
 					ret = true;
 					mIsRunning = true;
@@ -68,7 +73,7 @@ namespace gameover
 		// //Managers - usually in reverse order
 		mLogManager.Shutdown();
 
-		mWindow.Shutdown();
+		mWindow->Shutdown();
 		SDL_Quit();
 	}
 
