@@ -7,7 +7,7 @@ def RunCommand(cmds):
     ret = 0
     cmds[0] = "{}/{}/{}.py".format(os.getcwd(), TOOLS_DIR, cmds[0])
     if os.path.exists(cmds[0]):
-        cmds.insert(0, "python3")
+        cmds.insert(0, "python")
         ret = subprocess.call(cmds)
     else:
         print("Invalid command: ", cmds[0])
