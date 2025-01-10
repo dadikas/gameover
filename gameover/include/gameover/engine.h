@@ -1,6 +1,7 @@
 #pragma once
 #include "core/window.h"
 #include "managers/logmanager.h"
+#include "managers/rendermanager.h"
 namespace gameover
 {
     class Engine
@@ -11,6 +12,10 @@ namespace gameover
         
         void Run();
         inline void Quit(){ mIsRunning = false; } 
+
+        inline managers::RenderManager& GetRenderManager() {
+            return mRendermanager;
+        }
         
     private:
         void GetInfo();
@@ -22,7 +27,9 @@ namespace gameover
         bool mIsInitialized;
 
         core::Window* mWindow;
+
         managers::LogManager mLogManager;
+        managers::RenderManager mRendermanager;
 
 
         Engine();

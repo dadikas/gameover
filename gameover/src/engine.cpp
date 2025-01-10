@@ -1,8 +1,11 @@
 #include "engine.h"
 #include "sdl2/SDL.h"
 #include "log.h"
-#include <SDL2/SDL.h>
+//#include <SDL2/SDL.h>
 #include "core/opengl_window.h"
+#include "graphics/mesh.h"
+#include "graphics/shader.h"
+
 namespace gameover
 {
 	Engine &Engine::Instance()
@@ -18,11 +21,40 @@ namespace gameover
 	{
 		if (Initialize())
 		{
+			float vertices[]{
+				-0.5f,	-0.5f,	0.f,
+				 0.f,	 0.5f,	0.f,
+				 0.5f,	-0.5f,	0.f,
+			};
+			std::shared_ptr<graphics::Mesh> mesh = std::make_shared<graphics::Mesh>(&vertices[0], 3, 3);
+
+			const char* vertextShader = R"(
+				#version 410 core
+				layout (location = 0) in vec3 position;				
+				void main(){
+					gl_Position = vec4(position, 1.0);
+				}
+			)";
+
+			const char* fragmentShader = R"(
+				#version 410 core
+				out vec4 outColor;				
+				void main(){
+					outColor = vec4(1.0);
+				}
+			)";
+			std::shared_ptr<graphics::Shader> shader = std::make_shared<graphics::Shader>(vertextShader, fragmentShader);
+
 			while (mIsRunning)
 			{
 				mWindow->PumpEvents();
 
 				mWindow->BeginRender();
+
+				auto rc = std::make_unique<graphics::rendercommands::RenderMesh>(mesh, shader);
+				mRendermanager.Submit(std::move(rc));
+				mRendermanager.Flush();
+
 				mWindow->EndRender();
 			}
 			Shutdown();
@@ -53,6 +85,8 @@ namespace gameover
 				GAMEOVER_INFO("SDL2 {}.{}.{}", (int)version.major, (int)version.minor, (int)version.patch);
 				if (mWindow->Create())
 				{
+					mRendermanager.Inittialize();
+
 					ret = true;
 					mIsRunning = true;
 					mIsInitialized = true;
@@ -71,6 +105,7 @@ namespace gameover
 	{
 		mIsRunning = false;
 		// //Managers - usually in reverse order
+		mRendermanager.Shutdown();
 		mLogManager.Shutdown();
 
 		mWindow->Shutdown();
