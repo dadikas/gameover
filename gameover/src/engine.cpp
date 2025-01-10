@@ -52,7 +52,9 @@ namespace gameover
 				mWindow->BeginRender();
 
 				auto rc = std::make_unique<graphics::rendercommands::RenderMesh>(mesh, shader);
+
 				mRendermanager.Submit(std::move(rc));
+
 				mRendermanager.Flush();
 
 				mWindow->EndRender();
@@ -131,6 +133,7 @@ namespace gameover
 	}
 
 	Engine *Engine::mInstance = nullptr;
+
 	Engine::Engine() : mIsRunning(false),
 					   mIsInitialized(false) {}
 }

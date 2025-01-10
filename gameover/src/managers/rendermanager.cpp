@@ -6,9 +6,9 @@
 namespace gameover::managers {
 	void RenderManager::Inittialize(){
 
-		GAMEOVER_INFO("OpengGL Info:\n Vendor:\t{}\n Render:\t{}\n Version:\t{}\n",
+		GAMEOVER_INFO("OpengGL Info:\n Vendor:\t{}\n Render:\t{}\n Version:\t{}",
 			(const char*)glGetString(GL_VENDOR),
-			(const char*)glGetString(GL_RENDER),
+			(const char*)glGetString(GL_RENDERER),
 			(const char*)glGetString(GL_VERSION));
 
 		// Enable OpenGL settings
@@ -18,7 +18,7 @@ namespace gameover::managers {
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-		glClearColor(
+		SetClearColor(
 			static_cast<float>(0x64) / static_cast<float>(0xFF),
 			static_cast<float>(0x95) / static_cast<float>(0xFF),
 			static_cast<float>(0xED) / static_cast<float>(0xFF),
@@ -34,7 +34,7 @@ namespace gameover::managers {
 	}
 
 	void RenderManager::SetClearColor(float r, float g, float b, float a) {
-		glClearColor(r, b, g, a);
+		glClearColor(r, g, b, a);
 	}
 
 	void RenderManager::Clear()

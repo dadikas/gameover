@@ -21,5 +21,8 @@ namespace gameover::graphics::rendercommands {
 			shader->Unbind();
 			mesh->Unbind();
 		}
+		else {
+			GAMEOVER_WARN("Attemping to excute RenderMesh with invalid value")
+		}
 	}
 }
