@@ -13,7 +13,6 @@ tdir = "bin/%{cfg.buildcfg}/%{prj.name}"
 odir = "bin-obj/%{cfg.buildcfg}/%{prj.name}"
 --vendors dependencies
 vendors = {}
-vendors["GLFW"] = "vendors/glfw-3.4"
 vendors["SDL2"] = "vendors/sdl2"
 vendors["SPDLOG"] = "vendors/spdlog"
 vendors["GLAD"] = "vendors/glad"
@@ -38,7 +37,7 @@ project "gameover"
 
     externalincludedirs
     {
-        "%{prj.name}/include/gameover",
+        "%{prj.name}/include",
         "%{vendors.SDL2}/include",
         "%{vendors.SPDLOG}/include",
         "%{vendors.GLAD}/include",
@@ -108,6 +107,7 @@ project "gameovereditor"
     externalincludedirs
     {
         "gameover/include",
+        "%{vendors.SPDLOG}/include",
     }
 
     flags
@@ -138,6 +138,7 @@ project "gameovereditor"
         links{
             "SDL2",
             "GLAD",
+            "dl",
         }
 
     filter "configurations:Debug"

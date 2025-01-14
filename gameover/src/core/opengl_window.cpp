@@ -1,8 +1,12 @@
-#include "core/opengl_window.h"
-#include "log.h"
-#include "engine.h"
+#include "gameover/core/opengl_window.h"
+#include "gameover/log.h"
+#include "gameover/engine.h"
 #include "sdl2/SDL.h"
 #include "glad/glad.h"
+
+#include "gameover/input/mouse.h"
+#include "gameover/input/keyboard.h"
+#include "gameover/input/joystick.h"
 
 namespace gameover::core
 {
@@ -16,6 +20,7 @@ namespace gameover::core
 
     bool OpenGlWindow::Create()
     {
+
         bool ret = true;
         
         mWindow = SDL_CreateWindow("Gameover", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
@@ -32,7 +37,7 @@ namespace gameover::core
         SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
         // Set window size
-        SDL_SetWindowSize(mWindow, 400, 400);
+        SDL_SetWindowSize(mWindow, 800, 600);
 
         // Create OpenGL context
         mContext = SDL_GL_CreateContext(mWindow);
@@ -58,17 +63,17 @@ namespace gameover::core
     // Shutdown: Clean up window and context
     void OpenGlWindow::Shutdown()
     {
-        if (mContext)
-        {
-            SDL_GL_DeleteContext(mContext);
-            mContext = nullptr;
-        }
+		if (mContext)
+		{
+			SDL_GL_DeleteContext(mContext);
+			mContext = nullptr;
+		}
 
-        if (mWindow)
-        {
-            SDL_DestroyWindow(mWindow);
-            mWindow = nullptr;
-        }
+		if (mWindow)
+		{
+			SDL_DestroyWindow(mWindow);
+			mWindow = nullptr;
+		}
     }
 
     // Pump events (handle SDL events)
@@ -82,11 +87,21 @@ namespace gameover::core
             case SDL_QUIT:
                 Engine::Instance().Quit();
                 break;
-
+            case SDL_CONTROLLERDEVICEADDED:
+                input::Joystick::OnJoystickConnected(event.cdevice);
+                break;
             default:
                 break;
             }
         }
+        //update input
+        input::Mouse::Update();
+        input::Keyboard::Update();
+    }
+
+    void OpenGlWindow::GetSize(int& w, int& h)
+    {
+        SDL_GetWindowSize(mWindow, &w, &h);
     }
 
     // Begin rendering (clear buffers)

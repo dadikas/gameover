@@ -15,6 +15,8 @@ namespace gameover::core
         void Shutdown() override;
         void PumpEvents() override;
 
+        void GetSize(int& x, int& y) override;
+
         void BeginRender() override;
         void EndRender() override;
      private:

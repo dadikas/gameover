@@ -1,4 +1,4 @@
-#include "graphics/mesh.h"
+#include "gameover/graphics/mesh.h"
 
 #include "glad/glad.h"
 
@@ -21,8 +21,23 @@ namespace gameover::graphics {
 
 		glBindVertexArray(0);
 	}
+	Mesh::Mesh(float* vertextArray, uint32_t vertextCount, uint32_t dimensions, uint32_t* elementArray, uint32_t elementCount)
+		:Mesh(vertextArray, vertextCount, dimensions)
+	{
+		mElementCount = elementCount;
+		glBindVertexArray(mVao);
+
+		glGenBuffers(1, &mEbo);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mEbo);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, elementCount * sizeof(uint32_t), elementArray, GL_STATIC_DRAW);
+
+		glBindVertexArray(0);
+	}
 	Mesh::~Mesh() {
 		glDeleteBuffers(1, &mPositionVbo);
+		if (mEbo != 0) {
+			glDeleteBuffers(1, &mEbo);
+		}
 		glDeleteVertexArrays(1, &mVao);
 	}
 

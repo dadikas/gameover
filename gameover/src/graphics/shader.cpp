@@ -1,5 +1,5 @@
-#include "graphics/shader.h"
-#include "log.h"
+#include "gameover/graphics/shader.h"
+#include "gameover/log.h"
 
 #include "glad/glad.h"
 

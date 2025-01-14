@@ -1,10 +1,14 @@
-#include "engine.h"
+#include "gameover/engine.h"
+#include "gameover/log.h"
+#include "gameover/app.h"
+
+#include "gameover/core/opengl_window.h"
+
+#include "gameover/input/mouse.h"
+#include "gameover/input/keyboard.h"
+
+
 #include "sdl2/SDL.h"
-#include "log.h"
-//#include <SDL2/SDL.h>
-#include "core/opengl_window.h"
-#include "graphics/mesh.h"
-#include "graphics/shader.h"
 
 namespace gameover
 {
@@ -17,47 +21,21 @@ namespace gameover
 		return *mInstance;
 	}
 
-	void Engine::Run()
+	void Engine::Run(App* app)
 	{
+		mLogManager.Initialize();
+		GAMEOVER_ASSERT(!mApp, "Attemping to call Engine::Run when a valid app already exists");
+		if (mApp) {
+			return;
+		}
+		mApp = app;
 		if (Initialize())
 		{
-			float vertices[]{
-				-0.5f,	-0.5f,	0.f,
-				 0.f,	 0.5f,	0.f,
-				 0.5f,	-0.5f,	0.f,
-			};
-			std::shared_ptr<graphics::Mesh> mesh = std::make_shared<graphics::Mesh>(&vertices[0], 3, 3);
-
-			const char* vertextShader = R"(
-				#version 410 core
-				layout (location = 0) in vec3 position;				
-				void main(){
-					gl_Position = vec4(position, 1.0);
-				}
-			)";
-
-			const char* fragmentShader = R"(
-				#version 410 core
-				out vec4 outColor;				
-				void main(){
-					outColor = vec4(1.0);
-				}
-			)";
-			std::shared_ptr<graphics::Shader> shader = std::make_shared<graphics::Shader>(vertextShader, fragmentShader);
 
 			while (mIsRunning)
 			{
-				mWindow->PumpEvents();
-
-				mWindow->BeginRender();
-
-				auto rc = std::make_unique<graphics::rendercommands::RenderMesh>(mesh, shader);
-
-				mRendermanager.Submit(std::move(rc));
-
-				mRendermanager.Flush();
-
-				mWindow->EndRender();
+				Update();
+				Render();
 			}
 			Shutdown();
 		}
@@ -67,14 +45,15 @@ namespace gameover
 	bool Engine::Initialize()
 	{
 		bool ret = false;
-		mWindow = new core::OpenGlWindow();
+		//mWindow = new core::OpenGlWindow();
+		mWindow = std::make_shared<core::OpenGlWindow>();
+
 
 		GAMEOVER_ASSERT(!mIsInitialized, "Attempting to call Engine::Initialize() more than once");		
 		if (!mIsInitialized)
 		{
-			
-			mLogManager.Initialize();
 			GetInfo();
+
 			if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
 			{
 				GAMEOVER_ERROR("Error initializing SDL2: {}", SDL_GetError());
@@ -85,13 +64,21 @@ namespace gameover
 				SDL_version version;
 				SDL_VERSION(&version);
 				GAMEOVER_INFO("SDL2 {}.{}.{}", (int)version.major, (int)version.minor, (int)version.patch);
-				if (mWindow->Create())
+
+				if (mWindow && mWindow->Create())
 				{
+					//initialize Managers
 					mRendermanager.Inittialize();
 
 					ret = true;
 					mIsRunning = true;
 					mIsInitialized = true;
+
+					//initialize input
+					input::Mouse::Initialize();
+					input::Keyboard::Initialize();
+
+					mApp->Initialize();
 				}
 			}
 			if (!ret)
@@ -105,13 +92,32 @@ namespace gameover
 	}
 	void Engine::Shutdown()
 	{
+
 		mIsRunning = false;
+		mIsInitialized = false;
+
+		mApp->Shutdown();
 		// //Managers - usually in reverse order
 		mRendermanager.Shutdown();
-		mLogManager.Shutdown();
+		
 
 		mWindow->Shutdown();
 		SDL_Quit();
+
+		mLogManager.Shutdown();
+	}
+
+	void Engine::Update()
+	{
+		mWindow->PumpEvents();
+		mApp->Update();
+	}
+
+	void Engine::Render()
+	{
+		mWindow->BeginRender();
+		mApp->Render();
+		mWindow->EndRender();
 	}
 
 	void Engine::GetInfo()
@@ -132,8 +138,13 @@ namespace gameover
 #endif
 	}
 
-	Engine *Engine::mInstance = nullptr;
+	Engine* Engine::mInstance = nullptr;
 
-	Engine::Engine() : mIsRunning(false),
-					   mIsInitialized(false) {}
+	Engine::Engine() : 
+		mIsRunning(false),
+		mIsInitialized(false),
+		mApp(nullptr)
+	{
+			
+	}
 }

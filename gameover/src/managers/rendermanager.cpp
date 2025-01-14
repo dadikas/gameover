@@ -1,6 +1,6 @@
-#include "managers/rendermanager.h"
+#include "gameover/managers/rendermanager.h"
 
-#include "log.h"
+#include "gameover/log.h"
 #include "glad/glad.h"
 
 namespace gameover::managers {

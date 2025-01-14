@@ -1,4 +1,4 @@
-﻿#include "core/window.h"  // Include header file of Window class
+﻿#include "gameover/core/window.h"  // Include header file of Window class
 
 namespace gameover::core
 {
@@ -13,6 +13,10 @@ namespace gameover::core
 
     void Window::PumpEvents()
     {
+    }
+
+    void Window::GetSize(int& x, int& y) {
+
     }
 
     void Window::BeginRender()

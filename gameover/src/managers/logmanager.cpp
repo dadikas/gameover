@@ -1,6 +1,6 @@
-#include "managers/logmanager.h"
+#include "gameover/managers/logmanager.h"
 #include <spdlog/sinks/stdout_color_sinks.h>
-#include "log.h"
+#include "gameover/log.h"
 #include <memory>
 namespace gameover::managers
 {

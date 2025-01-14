@@ -1,8 +1,8 @@
-#include "graphics/rendercommands.h"
-#include "log.h"
+#include "gameover/graphics/rendercommands.h"
+#include "gameover/log.h"
 
-#include "graphics/mesh.h"
-#include "graphics/shader.h"
+#include "gameover/graphics/mesh.h"
+#include "gameover/graphics/shader.h"
 
 #include "glad/glad.h"
 
@@ -16,7 +16,14 @@ namespace gameover::graphics::rendercommands {
 			mesh->Bind();
 			shader->Bind();
 
-			glDrawArrays(GL_TRIANGLE_STRIP, 0, mesh->GetVertexCount());
+			if (mesh->GetElementCount() > 0) {
+				glDrawElements(GL_TRIANGLES, mesh->GetElementCount(), GL_UNSIGNED_INT, 0);
+			}
+			else {
+				glDrawArrays(GL_TRIANGLE_STRIP, 0, mesh->GetVertexCount());
+
+			}
+
 
 			shader->Unbind();
 			mesh->Unbind();

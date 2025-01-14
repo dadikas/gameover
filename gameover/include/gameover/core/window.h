@@ -9,6 +9,8 @@ namespace gameover::core
         virtual void Shutdown();
         virtual void PumpEvents();
 
+        virtual void GetSize(int& w, int& h);
+
         virtual void BeginRender();
         virtual void EndRender();
 
