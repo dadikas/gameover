@@ -31,8 +31,10 @@ project "gameover"
 
     files{
         "%{prj.name}/include/**.h",
+        "%{prj.name}/include/**.cpp",
         "%{prj.name}/src/**.h",
         "%{prj.name}/src/**.cpp",
+        "%{prj.name}/**.natvis",
     }
 
     externalincludedirs

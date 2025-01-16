@@ -16,6 +16,8 @@ namespace gameover
         void Run(App* app);
         inline void Quit(){ mIsRunning = false; } 
 
+        inline App& GetApp() { return* mApp; }
+
         inline std::shared_ptr<core::Window> GetWindow() { return mWindow; }
 
         inline managers::RenderManager& GetRenderManager() {

@@ -1,8 +1,8 @@
 ﻿#include "gameover/core/window.h"  // Include header file of Window class
-
+#include "gameover/graphics/framebuffer.h"
 namespace gameover::core
 {
-    bool Window::Create()
+    bool Window::Create(const WindowProperties& props)
     {
         return true;
     }
@@ -26,4 +26,5 @@ namespace gameover::core
     void Window::EndRender()
     {
     }
+
 }

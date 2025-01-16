@@ -4,6 +4,7 @@
 namespace gameover::graphics {
 	class Mesh;
 	class Shader;
+	class Framebuffer;
 	namespace rendercommands {
 		class Rendercommand {
 		public:
@@ -18,6 +19,19 @@ namespace gameover::graphics {
 		private:
 			std::weak_ptr<Mesh> mMesh;
 			std::weak_ptr<Shader> mShader;
+		};
+
+		class PushFramebuffer : public Rendercommand {
+		public:
+			PushFramebuffer(std::weak_ptr<Framebuffer> framebuffer): mFramebuffer(framebuffer){}
+			virtual void Excute() override;
+		private:
+			std::weak_ptr<Framebuffer> mFramebuffer;
+		};
+		class PopFramebuffer : public Rendercommand {
+		public:
+			PopFramebuffer(){}
+			virtual void Excute() override;
 		};
 	}
 }

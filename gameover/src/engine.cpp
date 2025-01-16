@@ -6,6 +6,7 @@
 
 #include "gameover/input/mouse.h"
 #include "gameover/input/keyboard.h"
+#include "gameover/input/joystick.h"
 
 
 #include "sdl2/SDL.h"
@@ -65,7 +66,9 @@ namespace gameover
 				SDL_VERSION(&version);
 				GAMEOVER_INFO("SDL2 {}.{}.{}", (int)version.major, (int)version.minor, (int)version.patch);
 
-				if (mWindow && mWindow->Create())
+				core::WindowProperties props = mApp->GetWindowProperties();
+
+				if (mWindow->Create(props))
 				{
 					//initialize Managers
 					mRendermanager.Inittialize();
@@ -95,8 +98,11 @@ namespace gameover
 
 		mIsRunning = false;
 		mIsInitialized = false;
-
+		//shutdown client
 		mApp->Shutdown();
+
+		//shutdown Input
+		input::Joystick::Shutdown();
 		// //Managers - usually in reverse order
 		mRendermanager.Shutdown();
 		

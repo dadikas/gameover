@@ -1,5 +1,6 @@
 #include "gameover/graphics/rendercommands.h"
 #include "gameover/log.h"
+#include "gameover/engine.h"
 
 #include "gameover/graphics/mesh.h"
 #include "gameover/graphics/shader.h"
@@ -31,5 +32,17 @@ namespace gameover::graphics::rendercommands {
 		else {
 			GAMEOVER_WARN("Attemping to excute RenderMesh with invalid value")
 		}
+	}
+	void PushFramebuffer::Excute() {
+		std::shared_ptr<Framebuffer> fb = mFramebuffer.lock();
+		if (fb) {
+			Engine::Instance().GetRenderManager().PushFramebuffer(fb);
+		}
+		else {
+			GAMEOVER_WARN("Attemping to execute RenderMesh with invalid data");
+		}
+	}
+	void PopFramebuffer::Excute() {
+		Engine::Instance().GetRenderManager().PopFramebuffer();
 	}
 }

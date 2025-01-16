@@ -4,12 +4,17 @@
 #include "gameover/main.h"
 #include "gameover/log.h"
 
+#include "gameover/core/opengl_window.h"
+
 #include "gameover/graphics/mesh.h"
 #include "gameover/graphics/shader.h"
+#include "gameover/graphics/framebuffer.h"
 
 #include "gameover/input/mouse.h"
 #include "gameover/input/keyboard.h"
 #include "gameover/input/joystick.h"
+
+#include "external/imgui/imgui.h"
 
 using namespace gameover;
 
@@ -18,6 +23,19 @@ private:
 	std::shared_ptr<graphics::Mesh> mMesh;
 	std::shared_ptr<graphics::Shader> mShader;
 public:
+
+	core::WindowProperties GetWindowProperties() {
+		core::WindowProperties props;
+
+		props.title = "GameoverEditor";
+		props.w = 800;
+		props.h = 600;
+
+		props.imguiProps.IsDockingEnable = true;
+
+		return props;
+	}
+
     void Initialize() override {
 
 		float vertices[]{
@@ -82,6 +100,25 @@ public:
 		Engine::Instance().GetRenderManager().Flush();
 
     }
+	void ImguiRender() override {
+		ImGui::DockSpaceOverViewport(ImGui::GetWindowDockID(),ImGui::GetMainViewport());
+		ImGui::Begin("ReactPosx");
+		ImGui::End();
+		ImGui::Begin("ReactPosy");
+		ImGui::End();
+		if (ImGui::Begin("GameView")) {
+			if (ImGui::IsWindowHovered()) {
+				ImGui::SetNextFrameWantCaptureMouse(false);
+			}
+			auto& window = Engine::Instance().GetWindow();
+
+			ImVec2 size = { 480,320 };
+			ImVec2 uv0 = { 0,1 };
+			ImVec2 uv1 = { 1,0 };
+			ImGui::Image((intptr_t)window->GetFramebuffer()->GetTextureId(), size, uv0, uv1);
+		}
+		ImGui::End();
+	}
 };
 
 gameover::App* CreateApp() {
