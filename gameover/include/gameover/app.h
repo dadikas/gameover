@@ -3,10 +3,10 @@
 #include "gameover/core/window.h"
 
 namespace gameover {
-	class App {
+	class _declspec(dllexport) App {
 	public:
 		App(){}
-		~App(){}
+		virtual ~App(){}
 
 		virtual core::WindowProperties GetWindowProperties() { return core::WindowProperties(); }
 
@@ -19,4 +19,5 @@ namespace gameover {
 
 	private:
 	};
+	App* CreateApp();
 }

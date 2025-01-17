@@ -3,6 +3,8 @@
 
 #include "glad/glad.h"
 
+#include "external/glm/gtc/type_ptr.hpp"
+
 namespace gameover::graphics {
 	Shader::Shader(const std::string& vertex, const std::string& fragment) {
 		mProgramId = glCreateProgram();
@@ -94,6 +96,11 @@ namespace gameover::graphics {
 		glUniform2f(GetUniformLocation(name), val1, val2);
 	}
 
+	void Shader::SetUniformFloat2(const std::string& name, const glm::vec2& val)
+	{
+		SetUniformFloat2(name, val.x, val.y);
+	}
+
 	void Shader::SetUniformFloat3(const std::string& name, float val1, float val2, float val3)
 	{
 
@@ -101,11 +108,22 @@ namespace gameover::graphics {
 		glUniform3f(GetUniformLocation(name), val1, val2, val3);
 	}
 
+	void Shader::SetUniformFloat3(const std::string& name, const glm::vec3& val)
+	{
+		SetUniformFloat3(name, val.x, val.y, val.z);
+
+	}
+
 	void Shader::SetUniformFloat4(const std::string& name, float val1, float val2, float val3, float val4)
 	{
 
 		glUseProgram(mProgramId);
 		glUniform4f(GetUniformLocation(name), val1, val2, val3, val4);
+	}
+
+	void Shader::SetUniformFloat4(const std::string& name, const glm::vec4& val)
+	{
+		SetUniformFloat4(name, val.x, val.y, val.z, val.w);
 	}
 
 	int Shader::GetUniformLocation(const std::string& name)
@@ -116,6 +134,18 @@ namespace gameover::graphics {
 		}
 
 		return mUniformLocations[name];
+	}
+
+	void Shader::SetUniformMat3(const std::string& name, const glm::mat3& mat)
+	{
+		glUseProgram(mProgramId);
+		glUniformMatrix3fv(GetUniformLocation(name), 1, GL_FALSE, glm::value_ptr(mat));
+	}
+
+	void Shader::SetUniformMat4(const std::string& name, const glm::mat4& mat)
+	{
+		glUseProgram(mProgramId);
+		glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE, glm::value_ptr(mat));
 	}
 
 }

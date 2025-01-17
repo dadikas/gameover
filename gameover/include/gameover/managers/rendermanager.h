@@ -5,6 +5,8 @@
 #include <queue>
 #include <stack>
 
+#include "external/glm/glm.hpp"
+
 #define GAMEOVER_SUBMIT_RC(type, ...) std::move(std::make_unique<gameover::graphics::rendercommands::type>(__VA_ARGS__))
 
 namespace gameover::managers {
@@ -18,10 +20,10 @@ namespace gameover::managers {
 		void Inittialize();
 		void Shutdown();
 
-		void SetClearColor(float r, float g, float b, float a);
+		void SetViewport(const glm::ivec4 dimensions);
+		void SetClearColor(const glm::vec4 clearColour);
 		void SetWireframeMode(bool enable);
 		void Clear();
-		void SetViewport(int x, int y, int w, int h);
 		void Submit(std::unique_ptr<graphics::rendercommands::Rendercommand> rc);
 		void Flush();
 

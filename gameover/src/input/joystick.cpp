@@ -69,10 +69,10 @@ namespace gameover::input {
 				c->lastButtons = c->buttons;
 				c->lastAxes = c->axes;
 
-				for (unsigned int i = 0; i < static_cast<int>(Button::Count); ++i) {
+				for (unsigned int i = 0; i < static_cast<int>(Button::Count); i++) {
 					c->buttons[i] = SDL_GameControllerGetButton(c->gc, static_cast<SDL_GameControllerButton>(i));
 				}
-				for (unsigned int i = 0; i < static_cast<int>(Axis::Count); ++i) {
+				for (unsigned int i = 0; i < static_cast<int>(Axis::Count); i++) {
 					c->axes[i] = SDL_GameControllerGetAxis(c->gc, static_cast<SDL_GameControllerAxis>(i));
 				}
 

@@ -15,8 +15,8 @@ namespace gameover::core
     {
     }
 
-    void Window::GetSize(int& x, int& y) {
-
+    glm::ivec2 Window::GetSize() {
+        return glm::ivec2(0,0);
     }
 
     void Window::BeginRender()

@@ -3,7 +3,7 @@
 #include "gameover/core/imguiWindow.h"
 
 #include <string>
-
+#include "external/glm/glm.hpp"
 struct SDL_Window;
 using SDL_GLContext = void*;
 namespace gameover::graphics {
@@ -16,7 +16,7 @@ namespace gameover::core
 		int x, y, w, h;
 		int wMin, hMin;
 		int flags;
-		float ccR, ccG, ccB, ccA;
+        glm::vec3 clearColour;
         ImguiWindowProperties imguiProps;
 
 		WindowProperties();
@@ -28,7 +28,7 @@ namespace gameover::core
         virtual void Shutdown();
         virtual void PumpEvents();
 
-        virtual void GetSize(int& w, int& h);
+        virtual glm::ivec2 GetSize();
 
         virtual inline SDL_Window* GetSDLWindow() { return nullptr; };
 		virtual inline SDL_GLContext GetGLContext() { return nullptr; };

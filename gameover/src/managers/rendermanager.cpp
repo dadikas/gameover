@@ -20,12 +20,12 @@ namespace gameover::managers {
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-		SetClearColor(
+		SetClearColor({
 			static_cast<float>(0x64) / static_cast<float>(0xFF),
 			static_cast<float>(0x95) / static_cast<float>(0xFF),
 			static_cast<float>(0xED) / static_cast<float>(0xFF),
-			1.0f
-		);
+			1
+			});
 
 
 	}
@@ -35,13 +35,13 @@ namespace gameover::managers {
 		}
 	}
 
-	void RenderManager::SetViewport(int x, int y, int w, int h)
+	void RenderManager::SetViewport(const glm::ivec4 dimensions)
 	{
-		glViewport(x, y, w, h);
+		glViewport(dimensions.x, dimensions.y, dimensions.z, dimensions.w);
 	}
 
-	void RenderManager::SetClearColor(float r, float g, float b, float a) {
-		glClearColor(r, g, b, a);
+	void RenderManager::SetClearColor(const glm::vec4 clearColour) {
+		glClearColor(clearColour.r, clearColour.g, clearColour.b, clearColour.a);
 	}
 
 	void RenderManager::Clear()
@@ -76,15 +76,11 @@ namespace gameover::managers {
 	}
 	void RenderManager::PushFramebuffer(std::shared_ptr<graphics::Framebuffer> framebuffer) {
 		mFramebuffers.push(framebuffer);
-		glBindFramebuffer(GL_FRAMEBUFFER, framebuffer->GetFbo());
+		glBindFramebuffer(GL_FRAMEBUFFER, framebuffer->GetFbo()); 
+		SetViewport({ 0, 0, framebuffer->GetSize().x, framebuffer->GetSize().y });
 
-		uint32_t w, h;
-		framebuffer->GetSize(w, h);
-		SetViewport(0, 0, w, h);
-
-		float r, g, b, a;
-		framebuffer->GetClearColour(r, g, b, a);
-		glClearColor(r, g, b, a);
+		auto cc = framebuffer->GetClearColour();
+		glClearColor(cc.r, cc.g, cc.b, cc.a);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	}
@@ -95,16 +91,12 @@ namespace gameover::managers {
 			if (mFramebuffers.size() > 0) {
 				auto nextfb = mFramebuffers.top();
 				glBindFramebuffer(GL_FRAMEBUFFER, nextfb->GetFbo());
-				uint32_t w, h;
-				nextfb->GetSize(w, h);
-				SetViewport(0, 0, w, h);
+				SetViewport({0,0,nextfb->GetSize().x, nextfb->GetSize().y});
 			}
 			else {
 				glBindFramebuffer(GL_FRAMEBUFFER, 0);
 				auto& window = Engine::Instance().GetWindow();
-				int w, h;
-				window->GetSize(w, h);
-				SetViewport(0, 0, w, h);
+				SetViewport({0,0, window->GetSize().x, window->GetSize().y});
 			}
 		}
 	}

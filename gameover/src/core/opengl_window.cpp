@@ -13,6 +13,7 @@
 #include "gameover/input/keyboard.h"
 #include "gameover/input/joystick.h"
 
+#include <iostream>
 namespace gameover::core
 {
     WindowProperties::WindowProperties() {
@@ -26,10 +27,9 @@ namespace gameover::core
         hMin = 180;
 
         flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE;
-        ccR = static_cast<float>(0x64) / static_cast<float>(0xFF);
-        ccG = static_cast<float>(0x95) / static_cast<float>(0xFF);
-        ccB = static_cast<float>(0xED) / static_cast<float>(0xFF);
-        ccA = 1.0;
+        clearColour = glm::vec3(static_cast<float>(0x64) / static_cast<float>(0xFF),
+        static_cast<float>(0x95) / static_cast<float>(0xFF),
+        static_cast<float>(0xED) / static_cast<float>(0xFF));
     }
     OpenGlWindow::OpenGlWindow() : mWindow(nullptr), mGLContext(nullptr)
     {
@@ -71,7 +71,8 @@ namespace gameover::core
 
         //Engine::Instance().GetRenderManager().SetClearColor(props.ccR, props.ccG, props.ccB, 1.f);
         mFramebuffer = std::make_shared<graphics::Framebuffer>(props.w, props.h);
-        mFramebuffer->SetClearColour(props.ccR, props.ccG, props.ccB, 1.f);
+        glm::vec4 cc(props.clearColour.r, props.clearColour.g, props.clearColour.b, 1.f);
+        mFramebuffer->SetClearColour(cc);
 
         mImguiWindow.Create(props.imguiProps);
         return true;
@@ -126,9 +127,11 @@ namespace gameover::core
         input::Joystick::Update();
     }
 
-    void OpenGlWindow::GetSize(int& w, int& h)
+    glm::ivec2 OpenGlWindow::GetSize()
     {
+        int w, h;
         SDL_GetWindowSize(mWindow, &w, &h);
+        return glm::ivec2(w, h);
     }
 
     // Begin rendering (clear buffers)

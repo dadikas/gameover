@@ -22,7 +22,7 @@ namespace gameover::core
         inline SDL_GLContext GetGLContext() override { return mGLContext; };
         inline graphics::Framebuffer* GetFramebuffer() override { return mFramebuffer.get(); };
 
-        void GetSize(int& x, int& y) override;
+        glm::ivec2 GetSize() override;
 
         void BeginRender() override;
         void EndRender() override;

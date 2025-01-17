@@ -9,9 +9,8 @@ namespace gameover::graphics {
 		: mFbo(0)
 		, mTextureId(0)
 		, mRenderbufferId(0)
-		, mWith(width)
-		, mHeight(height)
-		, mCCR(1), mCCG(1), mCCB(1), mCCA(1)
+		, mSize({ width,height })
+		, mClearColour(1.f)
 	{
 		glGenFramebuffers(1, &mFbo);
 		glBindFramebuffer(GL_FRAMEBUFFER, mFbo);
@@ -19,7 +18,7 @@ namespace gameover::graphics {
 		//create colour texture
 		glGenTextures(1, &mTextureId);
 		glBindTexture(GL_TEXTURE_2D, mTextureId);
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, mWith, mHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, mSize.x, mSize.y, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		glBindTexture(GL_TEXTURE_2D, 0);
@@ -29,7 +28,7 @@ namespace gameover::graphics {
 		//create depth/stencil renderbuffer
 		glGenRenderbuffers(1, &mRenderbufferId); 
 		glBindRenderbuffer(GL_RENDERBUFFER, mRenderbufferId);
-		glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, mWith, mHeight); 
+		glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, mSize.x, mSize.y); 
 		glBindRenderbuffer(GL_RENDERBUFFER, 0);
 		glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, mRenderbufferId); 
 
